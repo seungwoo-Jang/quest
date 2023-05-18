@@ -28,20 +28,20 @@ def loss(X, W, b, y):
 
 def gradient(X, W, b, y):
   N = len(y)
-    y_pred = model(X, W, b)
-    dW = 1/N * 2 * X.T.dot(y_pred - y)
-    db = 2 * (y_pred - y).mean()
-    return dW, db
+  y_pred = model(X, W, b)
+  dW = 1/N * 2 * X.T.dot(y_pred - y)
+  db = 2 * (y_pred - y).mean()
+  return dW, db
 
 LEARNING_RATE = 0.01
 losses = []
 
 for i in range(1, 500000):
-    dW, db = gradient(X_train, W, b, y_train)
-    W -= LEARNING_RATE * dW
-    b -= LEARNING_RATE * db
-    L = loss(X_train, W, b, y_train)
-    losses.append(L)
+dW, db = gradient(X_train, W, b, y_train)
+W -= LEARNING_RATE * dW
+b -= LEARNING_RATE * db
+L = loss(X_train, W, b, y_train)
+losses.append(L)
     
 import matplotlib.pyplot as plt
 plt.plot(losses)
